@@ -1,0 +1,565 @@
+body {
+    font-family: sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-text-color);
+    background-color: #f0f0f0; 
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.main-header {
+    background-color: var(--primary-color);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px; 
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--dark-text-color);
+}
+
+.main-nav ul {
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    color: var(--dark-text-color);
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-2px); 
+}
+
+.hero-section {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    gap: 50px;
+    min-height: 500px;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: var(--dark-text-color);
+    animation: fadeInDown 1s ease-out; 
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: var(--dark-text-color);
+    animation: fadeInUp 1s ease-out 0.3s backwards;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+}
+
+.btn-primary:hover {
+    background-color: hsl(20, 100%, calc(50% - var(--button-hover-darken))); 
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: #fff;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    animation: zoomIn 1s ease-out 0.6s backwards; 
+}
+
+.popular-tours-section {
+    background-color: #fefefe;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.popular-tours-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 60px;
+    color: var(--dark-text-color);
+    position: relative;
+    display: inline-block;
+}
+
+.popular-tours-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -15px;
+    width: 80px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+}
+
+.tour-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tour-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-bottom: 20px; 
+    position: relative; 
+}
+
+.tour-item::before {
+    content: 'TOP'; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    padding: 5px 10px;
+    border-bottom-left-radius: 10px;
+    font-size: 0.8em;
+    font-weight: bold;
+    transform: rotate(5deg);
+    transform-origin: top right;
+    z-index: 10;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.tour-item:nth-child(1)::before { 
+    opacity: 1;
+}
+
+.tour-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tour-image-container {
+    position: relative;
+    overflow: hidden;
+    height: 200px; 
+}
+
+.tour-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.tour-item:hover .tour-image-container img {
+    transform: scale(1.05); 
+}
+
+.tour-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); 
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tour-item:hover .tour-overlay {
+    opacity: 1;
+}
+
+
+.tour-item h3 {
+    font-size: 1.8em;
+    margin: 20px 0 10px;
+    color: var(--dark-text-color);
+}
+
+.tour-description {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 15px;
+    padding: 0 20px;
+    min-height: 100px; 
+}
+
+.tour-price {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-top: auto; 
+    padding: 0 20px;
+}
+
+.promotions-section {
+    background-color: var(--primary-color);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.promotions-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 60px;
+    color: var(--dark-text-color);
+    position: relative;
+    display: inline-block;
+}
+
+.promotions-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -15px;
+    width: 80px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+}
+
+.promotion-circles {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.promo-circle {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.promo-circle::after {
+    content: 'Акція!'; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--dark-text-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.promo-circle:hover {
+    transform: scale(1.1);
+    background-color: var(--secondary-color);
+}
+
+.promo-circle:hover::after {
+    opacity: 1;
+    color: var(--light-text-color);
+}
+
+.about-section {
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+.about-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -15px;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.main-footer {
+    background-color: #333;
+    color: #fefefe;
+    padding: 50px 20px 20px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo-and-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.footer-logo img {
+    height: 100px; 
+    border-radius: 5px;
+}
+
+.footer-contact p {
+    font-size: 0.95em;
+    color: #ccc;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 50px;
+}
+
+.footer-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-nav ul li a {
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+.social-media {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-btn {
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: var(--light-text-color);
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tiktok {
+    background-color: #000;
+}
+
+.tiktok:hover {
+    background-color: #222;
+    transform: translateY(-2px);
+}
+
+.telegram {
+    background-color: #0088cc; 
+}
+
+.telegram:hover {
+    background-color: #00a0e0;
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .hero-content {
+        order: 2; 
+    }
+
+    .hero-image {
+        order: 1;
+    }
+
+    .tour-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-nav {
+        gap: 20px;
+    }
+
+    .footer-nav ul {
+        align-items: center;
+    }
+}
+
+    .main-nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .main-nav ul li {
+        margin: 0 10px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+
+    .promotion-circles {
+        flex-direction: column;
+        align-items: center;
+    }
